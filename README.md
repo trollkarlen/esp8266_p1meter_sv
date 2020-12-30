@@ -3,7 +3,7 @@
 Software for the ESP2866 that sends P1 smart meter data to an mqtt broker (with OTA firmware updates)
 
 ## about this fork
-This fork (tries) to add support for the `Landys and Gyr E360` smartmeter (DSMR5.0)
+This fork (tries) to add support for the `Landys and Gyr E360` smartmeter (DSMR5.0) in Sweden which measueres different values than in the Netherlands
 
 The ![original source](https://github.com/fliphess/esp8266_p1meter) has issues with DSMR5.0 meters who like to send telegrams every 1 second at a high 115200 baud rate. 
 This causes the used SoftwareSerial to struggle to keep up and thus only receives corrupted messages. This fork switches to using the main Hardware serial port (RX) for communication with the meter.
@@ -112,3 +112,4 @@ Standing on the heads of giants, big thanks and great respect to the writers and
 - http://romix.macuser.nl/software.html
 - http://blog.regout.info/category/slimmeter/
 - http://domoticx.com/p1-poort-slimme-meter-hardware/
+- https://github.com/psvanstrom/esphome-p1reader
