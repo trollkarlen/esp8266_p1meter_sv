@@ -1,4 +1,4 @@
-# Sensors for esp8266_p1meter to be used in Home Assistant
+# Sensors for esp8266_p1meter-sv to be used in Home Assistant
 
 - platform: mqtt
   name: P1 Consumption
