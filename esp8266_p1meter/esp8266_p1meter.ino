@@ -276,179 +276,179 @@ bool decode_telegram(int len)
 
     // 1-0:1.8.0(000992.992*kWh)
     // 1-0:1.8.0 = Cumulative hourly active import energy (A+) (Q1+Q4)
-    if (strncmp(telegram, "1.8.0", 5) == 0)
+    if (strncmp(telegram, "1-0:1.8.0", 9) == 0)
     {
         CONSUMPTION = getValue(telegram, len, '(', '*');
     }
 
     // 1-0:2.8.0(000560.157*kWh)
     // 1-0:2.8.0 = Cumulative hourly active export energy (A-) (Q2+Q3)
-    if (strncmp(telegram, "2.8.0", 5) == 0)
+    if (strncmp(telegram, "1-0:2.8.0", 9) == 0)
     {
         RETURNDELIVERY = getValue(telegram, len, '(', '*');
     }
 
     // 1-0:3.8.0(000560.157*kWh)
     // 1-0:3.8.0 = Cumulative hourly reactive import energy (R+) (Q1+Q2)
-    if (strncmp(telegram, "3.8.0", 5) == 0)
+    if (strncmp(telegram, "1-0:3.8.0", 9) == 0)
     {
         CONSUMPTION_REACT = getValue(telegram, len, '(', '*');
     }
 
     // 1-0:4.8.0(000560.157*kWh)
     // 1-0:4.8.0 = Cumulative hourly reactive export energy (R-) (Q3+Q4)
-    if (strncmp(telegram, "4.8.0", 5) == 0)
+    if (strncmp(telegram, "1-0:4.8.0", 9) == 0)
     {
         RETURNDELIVERY_REACT = getValue(telegram, len, '(', '*');
     }
 
     // 1-0:1.7.0(00.424*kW)
     // 1-0:1.7.x = Momentary Active power+ (Q1+Q4)
-    if (strncmp(telegram, "1.7.0", 5) == 0)
+    if (strncmp(telegram, "1-0:1.7.0", 9) == 0)
     {
         ACTUAL_CONSUMPTION = getValue(telegram, len, '(', '*');
     }
 
     // 1-0:2.7.0(00.000*kW) 
     // 1-0:2.7.x = Momentary Active power- (Q2+Q3)
-    if (strncmp(telegram, "2.7.0", 5) == 0)
+    if (strncmp(telegram, "1-0:2.7.0", 9) == 0)
     {
         ACTUAL_RETURNDELIVERY = getValue(telegram, len, '(', '*');
     }
 
     // 1-0:3.7.0(00.424*kW)
     // 1-0:3.7.x = Momentary Reactive power + ( Q1+Q2)
-    if (strncmp(telegram, "3.7.0", 5) == 0)
+    if (strncmp(telegram, "1-0:3.7.0", 9) == 0)
     {
         ACTUAL_CONSUMPTION_REACT = getValue(telegram, len, '(', '*');
     }
 
     // 1-0:4.7.0(00.000*kW) 
     // 1-0:4.7.x = Momentary Reactive power - ( Q3+Q4)
-    if (strncmp(telegram, "4.7.0", 5) == 0)
+    if (strncmp(telegram, "1-0:4.7.0", 9) == 0)
     {
         ACTUAL_RETURNDELIVERY_REACT = getValue(telegram, len, '(', '*');
     }
 
     // 1-0:21.7.0(00.378*kW)
     // 1-0:21.7.0 = Momentary Active power+ (L1)
-    if (strncmp(telegram, "21.7.0", 6) == 0)
+    if (strncmp(telegram, "1-0:21.7.0", 10) == 0)
     {
         L1_INSTANT_POWER_USAGE = getValue(telegram, len, '(', '*');
     }
 
     // 1-0:22.7.0(00.378*kW)
     // 1-0:22.7.0 = Momentary Active power- (L1)
-    if (strncmp(telegram, "22.7.0", 6) == 0)
+    if (strncmp(telegram, "1-0:22.7.0", 10) == 0)
     {
         L1_INSTANT_POWER_DELIVERY = getValue(telegram, len, '(', '*');
     }
 
     // 1-0:41.7.0(00.378*kW)
     // 1-0:41.7.0 = Momentary Active power+ (L2)
-    if (strncmp(telegram, "41.7.0", 6) == 0)
+    if (strncmp(telegram, "1-0:41.7.0", 10) == 0)
     {
         L2_INSTANT_POWER_USAGE = getValue(telegram, len, '(', '*');
     }
 
     // 1-0:42.7.0(00.378*kW)
     // 1-0:42.7.0 = Momentary Active power- (L2)
-    if (strncmp(telegram, "42.7.0", 6) == 0)
+    if (strncmp(telegram, "1-0:42.7.0", 10) == 0)
     {
         L2_INSTANT_POWER_DELIVERY = getValue(telegram, len, '(', '*');
     }
 
     // 1-0:61.7.0(00.378*kW)
     // 1-0:61.7.0 = Momentary Active power+ (L3)
-    if (strncmp(telegram, "61.7.0", 6) == 0)
+    if (strncmp(telegram, "1-0:61.7.0", 10) == 0)
     {
         L3_INSTANT_POWER_USAGE = getValue(telegram, len, '(', '*');
     }
 
     // 1-0:62.7.0(00.378*kW)
     // 1-0:62.7.0 = Momentary Active power- (L3)
-    if (strncmp(telegram, "62.7.0", 6) == 0)
+    if (strncmp(telegram, "1-0:62.7.0", 10) == 0)
     {
         L3_INSTANT_POWER_DELIVERY = getValue(telegram, len, '(', '*');
     }
 
     // 1-0:23.7.0(00.378*kW)
     // 1-0:23.7.0 = Momentary Reactive power+ (L1)
-    if (strncmp(telegram, "23.7.0", 6) == 0)
+    if (strncmp(telegram, "1-0:23.7.0", 10) == 0)
     {
         L1_REACT_POWER_USAGE = getValue(telegram, len, '(', '*');
     }
 
     // 1-0:24.7.0(00.378*kW)
     // 1-0:24.7.0 = Momentary Reactive power- (L1)
-    if (strncmp(telegram, "24.7.0", 6) == 0)
+    if (strncmp(telegram, "1-0:24.7.0", 10) == 0)
     {
         L1_REACT_POWER_DELIVERY = getValue(telegram, len, '(', '*');
     }
 
     // 1-0:43.7.0(00.378*kW)
     // 1-0:43.7.0 = Momentary Reactive power+ (L2)
-    if (strncmp(telegram, "43.7.0", 6) == 0)
+    if (strncmp(telegram, "1-0:43.7.0", 10) == 0)
     {
         L2_REACT_POWER_USAGE = getValue(telegram, len, '(', '*');
     }
 
     // 1-0:44.7.0(00.378*kW)
     // 1-0:44.7.0 = Momentary Reactive power+ (L2)
-    if (strncmp(telegram, "44.7.0", 6) == 0)
+    if (strncmp(telegram, "1-0:44.7.0", 10) == 0)
     {
         L2_REACT_POWER_DELIVERY = getValue(telegram, len, '(', '*');
     }
 
     // 1-0:63.7.0(00.378*kW)
     // 1-0:63.7.0 = Momentary Reactive power+ (L3)
-    if (strncmp(telegram, "63.7.0", 6) == 0)
+    if (strncmp(telegram, "1-0:63.7.0", 10) == 0)
     {
         L3_REACT_POWER_USAGE = getValue(telegram, len, '(', '*');
     }
 
     // 1-0:64.7.0(00.378*kW)
     // 1-0:64.7.0 = Momentary Reactive power- (L3)
-    if (strncmp(telegram, "64.7.0", 6) == 0)
+    if (strncmp(telegram, "1-0:64.7.0", 10) == 0)
     {
         L3_REACT_POWER_DELIVERY = getValue(telegram, len, '(', '*');
     }
 
     // 1-0:31.7.0(002*A)
     // 1-0:31.7.0 = Momentary RMS Current phase L1
-    if (strncmp(telegram, "31.7.0", 6) == 0)
+    if (strncmp(telegram, "1-0:31.7.0", 10) == 0)
     {
         L1_INSTANT_POWER_CURRENT = getValue(telegram, len, '(', '*');
     }
     // 1-0:51.7.0(002*A)
     // 1-0:51.7.0 = Momentary RMS Current phase L2
-    if (strncmp(telegram, "51.7.0", 6) == 0)
+    if (strncmp(telegram, "1-0:51.7.0", 10) == 0)
     {
         L2_INSTANT_POWER_CURRENT = getValue(telegram, len, '(', '*');
     }
     
     // 1-0:71.7.0(002*A)
     // 1-0:71.7.0 = Momentary RMS Current phase L3
-    if (strncmp(telegram, "71.7.0", 6) == 0)
+    if (strncmp(telegram, "1-0:71.7.0", 10) == 0)
     {
         L3_INSTANT_POWER_CURRENT = getValue(telegram, len, '(', '*');
     }
 
     // 1-0:32.7.0(232.0*V)
     // 1-0:32.7.0 = Momentary RMS Phase voltage L1
-    if (strncmp(telegram, "32.7.0", 6) == 0)
+    if (strncmp(telegram, "1-0:32.7.0", 10) == 0)
     {
         L1_VOLTAGE = getValue(telegram, len, '(', '*');
     }
     // 1-0:52.7.0(232.0*V)
     // 1-0:52.7.0 = Momentary RMS Phase voltage L2
-    if (strncmp(telegram, "52.7.0", 6) == 0)
+    if (strncmp(telegram, "1-0:52.7.0", 10) == 0)
     {
         L2_VOLTAGE = getValue(telegram, len, '(', '*');
     }   
     // 1-0:72.7.0(232.0*V)
     // 1-0:72.7.0 = Momentary RMS Phase voltage L3
-    if (strncmp(telegram, "72.7.0", 6) == 0)
+    if (strncmp(telegram, "1-0:72.7.0", 10) == 0)
     {
         L3_VOLTAGE = getValue(telegram, len, '(', '*');
     }
