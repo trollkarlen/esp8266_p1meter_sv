@@ -30,7 +30,8 @@
 #define MQTT_MAX_RECONNECT_TRIES 10
 
 // * MQTT root topic
-#define MQTT_ROOT_TOPIC "sensors/power/p1meter"
+//#define MQTT_ROOT_TOPIC "sensors/power/p1meter"
+#define MQTT_ROOT_TOPIC "mqtt-metric/metrics/p1meter"
 
 // * MQTT Last reconnection counter
 long LAST_RECONNECT_ATTEMPT = 0;
@@ -81,4 +82,4 @@ long L2_VOLTAGE;
 long L3_VOLTAGE;
 
 // * Set during CRC checking
-unsigned int currentCRC = 0;
+long int currentCRC = 0;

@@ -89,7 +89,9 @@ bool mqtt_reconnect()
             char *message = new char[16 + strlen(HOSTNAME) + 1];
             strcpy(message, "p1 meter alive: ");
             strcat(message, HOSTNAME);
-            mqtt_client.publish("hass/status", message);
+
+            String topic = String(MQTT_ROOT_TOPIC) + "/status/alive/text";
+            mqtt_client.publish(topic.c_str(), message);
 
             Serial.printf("MQTT root topic: %s\n", MQTT_ROOT_TOPIC);
         }
@@ -130,35 +132,41 @@ void send_metric(String name, long metric)
 
 void send_data_to_broker()
 {
-    send_metric("consumption", CONSUMPTION);
-    send_metric("returndelivery", RETURNDELIVERY);
-    send_metric("consumption_reactive", CONSUMPTION_REACT);
-    send_metric("returndelivery_reactive", RETURNDELIVERY_REACT);
-    send_metric("actual_consumption", ACTUAL_CONSUMPTION);
-    send_metric("actual_returndelivery", ACTUAL_RETURNDELIVERY);
-    send_metric("actual_consumption_reactive", ACTUAL_CONSUMPTION_REACT);
-    send_metric("actual_returndelivery_reactive", ACTUAL_RETURNDELIVERY_REACT);
+    // energy
+    send_metric("energy/consumption/Wh", CONSUMPTION);
+    send_metric("energy/returndelivery/Wh", RETURNDELIVERY);
+    send_metric("energy/consumption_reactive/VArh", CONSUMPTION_REACT);
+    send_metric("energy/returndelivery_reactive/VArh", RETURNDELIVERY_REACT);
 
-    send_metric("l1_instant_power_usage", L1_INSTANT_POWER_USAGE);
-    send_metric("l1_instant_power_delivery", L1_INSTANT_POWER_DELIVERY);
-    send_metric("l2_instant_power_usage", L2_INSTANT_POWER_USAGE);
-    send_metric("l2_instant_power_delivery", L2_INSTANT_POWER_DELIVERY);
-    send_metric("l3_instant_power_usage", L3_INSTANT_POWER_USAGE);
-    send_metric("l3_instant_power_delivery", L3_INSTANT_POWER_DELIVERY);
+    // power
+    send_metric("power/actual_consumption/W", ACTUAL_CONSUMPTION);
+    send_metric("power/actual_returndelivery/W", ACTUAL_RETURNDELIVERY);
+    send_metric("power/actual_consumption_reactive/VAr", ACTUAL_CONSUMPTION_REACT);
+    send_metric("power/actual_returndelivery_reactive/VAr", ACTUAL_RETURNDELIVERY_REACT);
 
-    send_metric("l1_reactive_power_usage", L1_REACT_POWER_USAGE);
-    send_metric("l1_reactive_power_delivery", L1_REACT_POWER_DELIVERY);
-    send_metric("l2_reactive_power_usage", L2_REACT_POWER_USAGE);
-    send_metric("l2_reactive_power_delivery", L2_REACT_POWER_DELIVERY);
-    send_metric("l3_reactive_power_usage", L3_REACT_POWER_USAGE);
-    send_metric("l3_reactive_power_delivery", L3_REACT_POWER_DELIVERY);
+    send_metric("power/l1_instant_power_usage/W", L1_INSTANT_POWER_USAGE);
+    send_metric("power/l1_instant_power_delivery/W", L1_INSTANT_POWER_DELIVERY);
+    send_metric("power/l2_instant_power_usage/W", L2_INSTANT_POWER_USAGE);
+    send_metric("power/l2_instant_power_delivery/W", L2_INSTANT_POWER_DELIVERY);
+    send_metric("power/l3_instant_power_usage/W", L3_INSTANT_POWER_USAGE);
+    send_metric("power/l3_instant_power_delivery/W", L3_INSTANT_POWER_DELIVERY);
+
+    // power
+    send_metric("power/l1_reactive_power_usage/VAr", L1_REACT_POWER_USAGE);
+    send_metric("power/l1_reactive_power_delivery/VAr", L1_REACT_POWER_DELIVERY);
+    send_metric("power/l2_reactive_power_usage/VAr", L2_REACT_POWER_USAGE);
+    send_metric("power/l2_reactive_power_delivery/VAr", L2_REACT_POWER_DELIVERY);
+    send_metric("power/l3_reactive_power_usage/VAr", L3_REACT_POWER_USAGE);
+    send_metric("power/l3_reactive_power_delivery/VAr", L3_REACT_POWER_DELIVERY);
    
-    send_metric("l1_voltage", L1_VOLTAGE);
-    send_metric("l2_voltage", L2_VOLTAGE);
-    send_metric("l3_voltage", L3_VOLTAGE);
-    send_metric("l1_instant_power_current", L1_INSTANT_POWER_CURRENT);
-    send_metric("l2_instant_power_current", L2_INSTANT_POWER_CURRENT);
-    send_metric("l3_instant_power_current", L3_INSTANT_POWER_CURRENT);
+    // voltage
+    send_metric("voltage/l1_voltage/mV", L1_VOLTAGE);
+    send_metric("voltage/l2_voltage/mV", L2_VOLTAGE);
+    send_metric("voltage/l3_voltage/mV", L3_VOLTAGE);
+    // current
+    send_metric("current/l1_instant_power_current/mA", L1_INSTANT_POWER_CURRENT);
+    send_metric("current/l2_instant_power_current/mA", L2_INSTANT_POWER_CURRENT);
+    send_metric("current/l3_instant_power_current/mA", L3_INSTANT_POWER_CURRENT);
     
 }
 
